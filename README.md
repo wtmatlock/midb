@@ -8,13 +8,9 @@ MIDB is built on PLSDB (v. 2024_05_31_v2), a database of 72,360 plasmid sequence
 
 ### Integron annotation
 
-We ran IntegronFinder (v. 2.0.6) with the script `run_integronfinder.sh`, which parallelises the job and depends on seqkit (v. 2.13.0). We used default parameters except
+We ran IntegronFinder (v. 2.0.6) with the script `run_integronfinder.sh`, which parallelises the job and depends on seqkit (v. 2.13.0). We used default parameters except `--local-max --topology-file "$topo_file" --promoter-attI`, using the PLSDB topology metadata as input (`topology.txt`).
 
-```
---local-max --topology-file "$topo_file" --promoter-attI
-```
-
-Using the PLSDB topology metadata as input (`topology.txt`).
+> Watch out for checkpoint directories when combining results at the end e.g. `integronfinder_results/NZ_CP135169.1/Results_Integron_Finder_NZ_CP135169.1/.ipynb_checkpoints/NZ_CP135169.1-checkpoint.integrons`
 
 ### Gene cassette protein annotation
 
@@ -23,3 +19,11 @@ We extracted the gene cassette proteins from the IntegronFinder output using `ex
 Next, we annotated `gene_cassettes.faa` using Bakta (v. 1.12.0 with full database v. 6.0 including AMRFinderPlus v. 2026-01-21.1) in `bakta_proteins` mode with default parameters.
 
 In addition, we annotated `gene_cassettes.faa` using DefenseFinder (https://defensefinder.mdmlab.fr/; accessed 2026-03-27) with default parameters, and against ISfinder (v. Oct-2020) using blastp (v. 2.17.0+) with default parameters except `-evalue 1e-5`.
+
+### Gene cassette protein clustering
+
+We clustered `gene_cassettes.faa` using MMseqs2 (v. 18.8cc5c) with default parameters except `-s 10 --min-seq-id 0.95 -c 0.95 --cov-mode 0 --cluster-mode 0 --alignment-mode 3 --max-seqs $N`, where `$N` was the number of input sequences.
+
+### Plasmid-level annotation
+
+We also annotated the plasmids using ISEScan (v. 1.7.3) with default parameters, and NCBI AMRFinderPlus (v. 4.2.7 with db v. 2026-01-21.1) with default parameters except `--plus`, using `run_amrfinder.sh`.
