@@ -18,7 +18,7 @@ We extracted the gene cassette proteins from the IntegronFinder output using `ex
 
 Next, we annotated `gene_cassettes.faa` using Bakta (v. 1.12.0 with full database v. 6.0 including AMRFinderPlus v. 2026-01-21.1) in `bakta_proteins` mode with default parameters.
 
-In addition, we annotated `gene_cassettes.faa` using DefenseFinder (https://defensefinder.mdmlab.fr/; accessed 2026-03-27) with default parameters, and against ISfinder (v. Oct-2020) using blastp (v. 2.17.0+) with default parameters except `-evalue 1e-5`.
+In addition, we annotated `gene_cassettes.faa` using DefenseFinder (v. 2.0.0 with models v. 2.0.2) with default parameters, and against ISfinder (v. Oct-2020) using blastp (v. 2.17.0+) with default parameters except `-evalue 1e-5`.
 
 ### Gene cassette protein clustering
 
