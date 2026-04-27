@@ -30,7 +30,7 @@ Using these, you can locate the desired nucleotide and amino acid sequences:
 | Integrases | `integrases.fna` and `integrases.faa`  | `ID_replicon\|ID_integron\|element` |
 | Putative gene cassettes proteins | `gene_cassettes.fna` and `gene_cassettes.faa`  | `ID_replicon\|ID_integron\|element` |
 
- > `ID_replicon` is also the plasmid NCBI nucleotide accession, making it easy to map back to the NCBI assembly accession.
+Note that `ID_replicon` is also the plasmid NCBI nucleotide accession, making it easy to map back to the NCBI assembly accession.
 
 <style>
 .md-typeset .table-container,
