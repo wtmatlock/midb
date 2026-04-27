@@ -6,7 +6,7 @@ MIDB is built on PLSDB (v. 2024_05_31_v2), a database of 72,360 plasmid sequence
 
 We ran IntegronFinder (v. 2.0.6) with the script `run_integronfinder.sh`, which parallelises the job and depends on seqkit (v. 2.13.0). We used default parameters except `--local-max --topology-file "$topo_file" --promoter-attI`, using the PLSDB topology metadata as input (`topology.txt`).
 
-We extracted the integron regions and integrases using `extract_regions.R`, which writes `integrons.fna`, `integrases.fna`, and `integrases.faa`.
+We extracted the integron regions and integrases using `extract_regions.R`, which writes `integrons.fna`, `integrases.fna`, and `integrases.faa`. We noted in IntegronFinder's [`integron.py`](https://github.com/gem-pasteur/Integron_Finder/blob/master/integron_finder/integron.py) script, `add_promoter` could generate out-of-bounds coordinates on linear contigs because its coordinate maths failed to account for search-window truncation at sequence edges. We therefore clamped extractions to avoid errors.
 
 If you re-run this yourself, watch out for checkpoint directories when combining results at the end e.g. `integronfinder_results/NZ_CP135169.1/Results_Integron_Finder_NZ_CP135169.1/.ipynb_checkpoints/NZ_CP135169.1-checkpoint.integrons`
 
