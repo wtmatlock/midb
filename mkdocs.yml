@@ -3,7 +3,6 @@ theme: material
 
 nav:
   - Home: index.md
-  - Quick start: quickstart.md
   - Workflow: workflow.md
 
 plugins:
