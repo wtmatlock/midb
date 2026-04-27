@@ -1,6 +1,6 @@
 # Workflow
 
-MIDB is built on PLSDB (v. 2024_05_31_v2), a database of 72,360 plasmid sequences derived from NCBI. We processed <ins>all</ins> sequences, and leave any further curation to the user.
+MIDB is built on PLSDB (v. 2024_05_31_v2), a database of 72,360 plasmid sequences derived from NCBI. We processed <ins>all</ins> sequences uniformly, and leave any further curation to the user.
 
 ## Integron annotation
 
