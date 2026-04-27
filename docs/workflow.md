@@ -6,19 +6,21 @@ MIDB is built on PLSDB (v. 2024_05_31_v2), a database of 72,360 plasmid sequence
 
 We ran IntegronFinder (v. 2.0.6) with the script `run_integronfinder.sh`, which parallelises the job and depends on seqkit (v. 2.13.0). We used default parameters except `--local-max --topology-file "$topo_file" --promoter-attI`, using the PLSDB topology metadata as input (`topology.txt`).
 
-> Watch out for checkpoint directories when combining results at the end e.g. `integronfinder_results/NZ_CP135169.1/Results_Integron_Finder_NZ_CP135169.1/.ipynb_checkpoints/NZ_CP135169.1-checkpoint.integrons`
-
 We extracted the integron regions and integrases using `extract_regions.R`, which writes `integrons.fna`, `integrases.fna`, and `integrases.faa`.
+
+If you re-run this yourself, watch out for checkpoint directories when combining results at the end e.g. `integronfinder_results/NZ_CP135169.1/Results_Integron_Finder_NZ_CP135169.1/.ipynb_checkpoints/NZ_CP135169.1-checkpoint.integrons`
 
 ## Gene cassette protein annotation
 
 We extracted the gene cassette proteins from the IntegronFinder output using `extract_regions.R`, which writes `gene_cassettes.fna` and `gene_cassettes.faa`.
 
-The `ambiguity_log.csv` reports any non-AGCT bases in both `gene_cassettes.fna` and `integrases.fna` entries. These were translated to X's in `gene_cassettes.faa` and `integrases.faa`, respectively.
-
 Next, we annotated `gene_cassettes.faa` using Bakta (v. 1.12.0 with full database v. 6.0 including AMRFinderPlus v. 2026-01-21.1) in `bakta_proteins` mode with default parameters.
 
 In addition, we annotated `gene_cassettes.faa` using DefenseFinder (v. 2.0.0 with models v. 2.0.2) with default parameters, and against ISfinder (v. Oct-2020) using blastp (v. 2.17.0+) with default parameters except `-evalue 1e-5 -outfmt "6 qseqid sseqid pident length mismatch gapopen qstart qend sstart send evalue bitscore qlen qcovs"`.
+
+## Translating ambiguous nucleotide bases
+
+The `ambiguity_log.csv` reports any non-AGCT bases in both `gene_cassettes.fna` and `integrases.fna` entries. These were translated to X's in `gene_cassettes.faa` and `integrases.faa`, respectively.
 
 ## Gene cassette protein clustering
 
