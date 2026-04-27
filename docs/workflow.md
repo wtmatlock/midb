@@ -22,6 +22,6 @@ In addition, we annotated `gene_cassettes.faa` using DefenseFinder (v. 2.0.0 wit
 
 We clustered `gene_cassettes.faa` using MMseqs2 (v. 18.8cc5c) with default parameters except `-s 10 --min-seq-id 0.95 -c 0.95 --cov-mode 0 --cluster-mode 0 --alignment-mode 3 --max-seqs $N`, where `$N` was the number of input sequences.
 
-###Plasmid-level annotation
+## Plasmid-level annotation
 
 We also annotated the plasmids using ISEScan (v. 1.7.3) with default parameters, and NCBI AMRFinderPlus (v. 4.2.7 with db v. 2026-01-21.1) with default parameters except `--plus`, using `run_amrfinder.sh`.
