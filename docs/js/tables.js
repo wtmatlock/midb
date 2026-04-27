@@ -13,7 +13,9 @@ $(document).ready(function() {
                 data: rows,
                 columns: columns,
                 pageLength: 10,
-                deferRender: true
+                deferRender: true,
+                scrollX: true,
+                autoWidth: false
             });
         }
     });
