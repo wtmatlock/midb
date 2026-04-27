@@ -8,9 +8,11 @@ We ran IntegronFinder (v. 2.0.6) with the script `run_integronfinder.sh`, which 
 
 > Watch out for checkpoint directories when combining results at the end e.g. `integronfinder_results/NZ_CP135169.1/Results_Integron_Finder_NZ_CP135169.1/.ipynb_checkpoints/NZ_CP135169.1-checkpoint.integrons`
 
+We extracted the integron regions and integrases using `extract_regions.R`, which writes `integrons.fna`, `integrases.fna`, and `integrases.faa`.
+
 ## Gene cassette protein annotation
 
-We extracted the gene cassette proteins from the IntegronFinder output using `extract_gene_cassette_proteins.R`, which writes the `gene_cassettes.fna` and `gene_cassettes.faa` multi-FASTA files, as well as the `ambiguity_log.csv`, which reports any non-AGCT bases in the nucleotide multi-FASTA. These were translated to X's in `gene_cassettes.faa`.
+We extracted the gene cassette proteins from the IntegronFinder output using `extract_regions.R`, which writes the `gene_cassettes.fna` and `gene_cassettes.faa` multi-FASTA files, as well as the `ambiguity_log.csv`, which reports any non-AGCT bases in the nucleotide multi-FASTA. These were translated to X's in `gene_cassettes.faa`.
 
 Next, we annotated `gene_cassettes.faa` using Bakta (v. 1.12.0 with full database v. 6.0 including AMRFinderPlus v. 2026-01-21.1) in `bakta_proteins` mode with default parameters.
 
