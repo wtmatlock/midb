@@ -6,10 +6,10 @@ The primary lookup file is `integronfinder_results_integrons.tsv`. This aggregat
 
 | Feature    | File | Header naming convention  |
 | -------- | ------- | ------- |
-| Whole integron elements  | `integrons.fna` | `<ID_replicon>&#124;<ID_integron>` |
-| Integrases | `integrases.fna` and `integrases.faa`  | `<ID_replicon>&#124;<ID_integron>&#124;<element>` |
-| Putative gene cassettes proteins | `gene_cassettes.fna` and `gene_cassettes.faa`  | `<ID_replicon>&#124;<ID_integron>&#124;<element>` |
+| Whole integron elements  | `integrons.fna` | `<ID_replicon>\|<ID_integron>` |
+| Integrases | `integrases.fna` and `integrases.faa`  | `<ID_replicon>\|<ID_integron>\|<element>` |
+| Putative gene cassettes proteins | `gene_cassettes.fna` and `gene_cassettes.faa`  | `<ID_replicon>\|<ID_integron>\|<element>` |
 
  > `ID_replicon` is also the plasmid NCBI nucleotide accession, making it easy to map back to the NCBI assembly accession.
 
-{{ read_csv('docs/combined_integronfinder_results_integrons.tsv', sep='\t') }}
+<table id="integron-table" class="display" style="width:100%"></table>
