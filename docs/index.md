@@ -1,6 +1,18 @@
 # Mobile integron database
 
-Welcome! The mobile integron database (MIDB) is a new, freely available resource of 8,854 complete and 3,576 partial plasmid-borne integrons derived from the publicly available plasmid sequences in PLSDB (v. 2024_05_31_v2). You can access the complete MIDB archive at `DOI`, or read on to get started.
+Welcome! The mobile integron database (MIDB) is a new, freely available resource of 8,854 complete and 3,576 partial plasmid-borne integrons derived from the publicly available plasmid sequences in PLSDB (v. 2024_05_31_v2). You can access the complete MIDB archive at `DOI`.
+
+<div class="grid cards" markdown>
+
+-   :material-school:{ .lg .middle } __[Tutorial](tutorial.md)__
+    ---
+    Learn about the archive contents.
+
+-   :material-dna:{ .lg .middle } __[Workflow](workflow.md)__
+    ---
+    Full description of bioinformatic methods used.
+
+</div>
 
 ## Quickstart
 
