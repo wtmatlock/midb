@@ -1,6 +1,6 @@
 # Tutorial
 
-The MIDB archive contains both the raw tool outputs and aggregated summaries. See [Workflow](workflow.md) for full details of the bioinformatic analyses.
+The MIDB archive contains both the raw tool outputs and aggregated summaries.
 
 | File | Description |
 | ---- | ----------- |
