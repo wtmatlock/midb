@@ -15,3 +15,24 @@ The primary lookup file is `integronfinder_results_integrons.tsv`. This aggregat
 <div class="table-container">
     <table id="integron-table" class="display" style="width:100%"></table>
 </div>
+
+<style>
+.md-typeset .table-container,
+.md-typeset .dataTables_wrapper {
+    width: 100% !important;
+    max-width: 100% !important;
+}
+
+.md-typeset #integron-table {
+    display: table !important;
+    width: 100% !important;
+    table-layout: auto !important;
+}
+
+.md-typeset #integron-table td, 
+.md-typeset #integron-table th {
+    max-width: 300px;
+    white-space: normal !important;
+    word-break: break-all !important;
+}
+</style>
