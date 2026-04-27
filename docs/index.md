@@ -1,18 +1,18 @@
 # Mobile integron database
 
-Welcome! The mobile integron database (MIDB) is a new, freely available resource of 8,854 complete and 3,576 partial plasmid-borne integrons derived from the publicly available plasmid sequences in PLSDB (v. 2024_05_31_v2). You can access the complete MIDB archive at `DOI`.
+Welcome! The mobile integron database (MIDB) is a new, freely available resource of 8,854 complete and 3,576 partial plasmid-borne integrons. You can access the complete MIDB archive at `DOI`.
 
-You can learn about the archive contents [here](tutorial.md), and find a full description of bioinformatic methods used [here](workflow.md).
+To learn about the complete archive contents, [go here](tutorial.md), and to find a full description of bioinformatic methods, [go here](workflow.md).
 
 ## Quickstart
 
-The primary output is the aggregated IntegronFinder annotations (`integronfinder_results_integrons.tsv`), which you can explore here:
+The primary output is the aggregated integron annotations:
 
 <div class="table-container">
     <table id="integron-table" class="display" style="width:100%"></table>
 </div>
 
-Using these, you can locate the desired nucleotide and amino acid sequences. Note that `ID_replicon` is also the plasmid NCBI nucleotide accession, making it easy to map back to the NCBI assembly accession.
+Using this, you can locate your desired nucleotide and amino acid sequences by combining `ID_replicon`, `ID_integron`, and `element`:
 
 | Feature    | File(s) | Header naming convention  |
 | -------- | ------- | ------- |
