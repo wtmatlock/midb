@@ -12,6 +12,6 @@ The primary lookup file is `integronfinder_results_integrons.tsv`. This aggregat
 
  > `ID_replicon` is also the plasmid NCBI nucleotide accession, making it easy to map back to the NCBI assembly accession.
 
-<div style="overflow-x: auto;">
-    <table id="integron-table" class="display"></table>
+<div class="table-container">
+    <table id="integron-table" class="display" style="width:100%"></table>
 </div>
