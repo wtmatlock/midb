@@ -8,7 +8,7 @@ To learn about the complete archive contents, [go here](tutorial.md), and to fin
 
 The primary output is the aggregated integron annotations:
 
-<div class="table-container">
+<div class="table-container" style="margin: 1.5em 0;">
     <table id="integron-table" class="display" style="width:100%"></table>
 </div>
 
@@ -16,7 +16,6 @@ Using this, you can locate your desired nucleotide and amino acid sequences by c
 
 | Feature    | File(s) | Header naming convention  |
 | -------- | ------- | ------- |
-| Whole integron elements  | `integrons.fna` | `ID_replicon\|ID_integron` |
 | Integrases | `integrases.fna` and `integrases.faa`  | `ID_replicon\|ID_integron\|element` |
 | Putative gene cassettes proteins | `gene_cassettes.fna` and `gene_cassettes.faa`  | `ID_replicon\|ID_integron\|element` |
 
