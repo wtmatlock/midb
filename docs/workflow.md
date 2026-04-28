@@ -10,7 +10,7 @@ If you re-run this yourself, watch out for checkpoint directories when combining
 
 ## Element extraction
 
-We extracted the integron elements using `extract_regions.R`, which writes `integrons.fna`, `integrases.fna`, `integrases.faa`, `gene_cassettes.fna`, and `gene_cassettes.faa`. We noted that in IntegronFinder's [`integron.py`](https://github.com/gem-pasteur/Integron_Finder/blob/master/integron_finder/integron.py) script, the `add_promoter` function could generate out-of-bounds coordinates on linear contigs because its coordinate maths failed to account for search-window truncation at sequence edges. We therefore clamped extractions to avoid errors.
+We extracted the integron elements using `extract_regions.R`, which writes `integrases.fna`, `integrases.faa`, `gene_cassettes.fna`, and `gene_cassettes.faa`. We noted that in IntegronFinder's [`integron.py`](https://github.com/gem-pasteur/Integron_Finder/blob/master/integron_finder/integron.py) script, the `add_promoter` function could generate out-of-bounds coordinates on linear contigs because its coordinate maths failed to account for search-window truncation at sequence edges. We therefore clamped extractions to avoid errors.
 
 The `ambiguity_log.csv` report, also written by `extract_regions.R`, records any non-AGCT bases in `gene_cassettes.fna` and `integrases.fna` entries. These were translated to X's in `gene_cassettes.faa` and `integrases.faa`, respectively.
 
