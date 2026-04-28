@@ -50,8 +50,6 @@ df <- integronfinder_results_integrons %>%
   group_by(ID_replicon, ID_integron) %>%
   arrange(pos_beg, .by_group = TRUE) %>%
   select(3, 2, 4, 1, everything()) %>%
-  ungroup() %>%
-  group_by(ID_replicon, ID_integron) %>%
   filter(any(str_detect(Gene, regex("IMP", ignore_case = TRUE)), na.rm = TRUE)) %>%
   ungroup()
 ```
