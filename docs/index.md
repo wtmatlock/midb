@@ -16,8 +16,8 @@ Using this, you can locate your desired nucleotide and amino acid sequences by c
 
 | Feature    | File(s) | Header naming convention  |
 | -------- | ------- | ------- |
-| Integrases | `integrases.fna` and `integrases.faa`  | `ID_replicon\|ID_integron\|element` |
-| Putative gene cassettes proteins | `gene_cassettes.fna` and `gene_cassettes.faa`  | `ID_replicon\|ID_integron\|element` |
+| Integrases | `integrases.fna` and `integrases.faa`  | `ID_replicon`\|`ID_integron`\|`element` |
+| Putative gene cassettes proteins | `gene_cassettes.fna` and `gene_cassettes.faa`  | `ID_replicon`\|`ID_integron`\|`element` |
 
 <style>
 .md-typeset .table-container,
