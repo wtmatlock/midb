@@ -6,7 +6,6 @@ The MIDB archive contains both the raw tool outputs and aggregated summaries.
 | ---- | ----------- |
 | `integronfinder_results_integrons.tsv` | Every integron element annotated across all plasmids. |
 | `integronfinder_results_summary.tsv` | The number of complete integrons, CALINs, and In0s in each plasmid. |
-| `integrons.fna` | |
 | `integrases.fna` | |
 | `integrases.faa` | |
 | `gene_cassettes.fna` | |
