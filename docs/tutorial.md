@@ -12,8 +12,6 @@ The MIDB archive contains both the raw tool outputs and aggregated summaries.
 | `gene_cassettes.faa` | |
 | `ambiguity_log.csv` | |
 | `bakta_annotations.tsv` | |
-| `defensefinder_annotations.tsv` | |
-| `isfinder_annotations.tsv` | |
 | `mmseqs2_clusters.tsv` | |
 | `amrfinder_annotations.tsv` | |
 | `isescan_annotations.tsv` | |
