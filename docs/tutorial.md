@@ -55,7 +55,7 @@ df <- integronfinder_results_integrons %>%
   filter(any(str_detect(Gene, regex("IMP", ignore_case = TRUE)), na.rm = TRUE)) %>%
   ungroup()
 ```
-Lastly, we can pull our plasmid accessions for further investigation (358, by my count):
+Lastly, pull the plasmid accessions for further investigation (358, by my count):
 ```
 imp_plasmids <- df %>% 
   select(ID_replicon) %>%
