@@ -7,6 +7,9 @@ nav:
   - Tutorial: tutorial.md
   - Workflow: workflow.md
 
+markdown_extensions:
+  - attr_list
+
 plugins:
   - search
   - table-reader
