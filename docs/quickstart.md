@@ -2,9 +2,9 @@
 
 Whilst we recommend [downloading the archive](https://doi.org/10.5281/zenodo.19662544) and [exploring the files yourself](tutorial.md), here you can quickly screen for plasmids and genes or interest.
 
-## Screen for plasmid accessions
+## Screen a plasmid accession
 
-Enter a plasmid accession from [PLSDB (v. 2024_05_31_v2)](https://ccb-microbe.cs.uni-saarland.de/plsdb2025/) to see if it contains an integron or integron-related elements:
+Enter a plasmid accession from [PLSDB (v. 2024_05_31_v2)](https://ccb-microbe.cs.uni-saarland.de/plsdb2025/) to see if it contains integron-related elements:
 
 <div class="table-container" style="margin: 2em 0;">
     <table id="integron-table" class="display" style="width:100%"></table>
