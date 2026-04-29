@@ -1,5 +1,5 @@
 site_name: Mobile integron database
-theme: readthedocs
+theme: bootstrap
 
 nav:
   - Home: index.md
