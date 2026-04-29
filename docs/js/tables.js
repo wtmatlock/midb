@@ -1,11 +1,17 @@
 $(document).ready(function() {
+
     function loadSearchableTable(tableId, tsvUrl) {
+        const finalUrl = '../' + tsvUrl;
+
         $.ajax({
-            url: './' + tsvUrl, 
+            url: finalUrl,
             dataType: 'text',
             success: function(data) {
                 const lines = data.trim().split('\n');
-                if (lines.length < 2) return;
+                if (lines.length < 2) {
+                    console.error("File is empty or only has headers: " + finalUrl);
+                    return;
+                }
 
                 const headers = lines[0].split('\t');
                 const columns = headers.map(h => ({ title: h.trim() }));
@@ -19,12 +25,12 @@ $(document).ready(function() {
                     pageLength: 10,
                     deferRender: true,
                     scrollX: true,
-                    autoWidth: false,
-                    "stripeClasses": [ 'odd-row', 'even-row' ] 
+                    autoWidth: false
                 });
             },
             error: function(xhr, status, error) {
-                console.error("Failed to load: " + tsvUrl, status, error);
+                console.error("Error loading TSV from: " + finalUrl);
+                $(tableId).after('<p style="color:red;">Failed to load data from ' + finalUrl + '. Check if the file exists in the docs/ folder.</p>');
             }
         });
     }
