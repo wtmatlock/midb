@@ -21,6 +21,5 @@ function loadTable(file, tableId) {
     });
 }
 
-// Load both tables
-loadTable('integronfinder_results_integrons.tsv', '#integron-table');
-loadTable('bakta_annotations.tsv', '#gene-table');
+loadTable('/integronfinder_results_integrons.tsv', '#integron-table');
+loadTable('/bakta_annotations.tsv', '#gene-table');
