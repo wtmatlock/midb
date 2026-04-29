@@ -1,5 +1,5 @@
 site_name: Mobile integron database
-theme: bootstrap
+theme: material
 
 nav:
   - Home: index.md
