@@ -1,46 +1,15 @@
-$(document).ready(function () {
+document.addEventListener("DOMContentLoaded", function () {
+    const tables = document.querySelectorAll("table");
 
-    function parseTSV(data) {
-        const lines = data.trim().split('\n');
-        const headers = lines[0].split('\t');
+    tables.forEach((table) => {
+        if (!table.classList.contains("datatable-initialised")) {
+            $(table).DataTable({
+                pageLength: 10,
+                scrollX: true,
+                autoWidth: false
+            });
 
-        const columns = headers.map(h => ({ title: h }));
-        const rows = lines.slice(1).map(l => l.split('\t'));
-
-        return { columns, rows };
-    }
-
-    function initTable($table) {
-        const tsvFile = $table.data('tsv');
-
-        if (!tsvFile) {
-            console.warn("No data-tsv attribute found for table:", $table);
-            return;
+            table.classList.add("datatable-initialised");
         }
-
-        $.ajax({
-            url: tsvFile,
-            dataType: 'text',
-            success: function (data) {
-                const parsed = parseTSV(data);
-
-                $table.DataTable({
-                    data: parsed.rows,
-                    columns: parsed.columns,
-                    pageLength: 10,
-                    deferRender: true,
-                    scrollX: true,
-                    autoWidth: false
-                });
-            },
-            error: function (xhr, status, err) {
-                console.error("Failed to load TSV:", tsvFile, err);
-            }
-        });
-    }
-
-    $('.tsv-table').each(function () {
-        initTable($(this));
     });
-
 });
