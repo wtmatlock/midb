@@ -2,7 +2,8 @@ site_name: Mobile integron database
 theme: readthedocs
 
 nav:
-  - Home: index.md
+  - Home: welcome.md
+  - Quickstart: quickstart.md
   - Tutorial: tutorial.md
   - Workflow: workflow.md
 
