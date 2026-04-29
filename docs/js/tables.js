@@ -1,43 +1,47 @@
-$(document).ready(function() {
-    function loadMIDBTable(tableId, filename) {
-        // Use the explicit Read the Docs path structure
-        const finalUrl = '/en/latest/' + filename;
+function initMIDBTable(tableId, filename) {
+    const tsvUrl = '/en/latest/' + filename;
 
-        console.log("Attempting to load: " + finalUrl);
+    console.log(`[MIDB] Attempting to fetch: ${tsvUrl}`);
 
-        $.ajax({
-            url: finalUrl,
-            dataType: 'text',
-            success: function(data) {
-                const lines = data.trim().split('\n');
-                if (lines.length < 2) {
-                    console.warn("File " + filename + " is empty or has no data rows.");
-                    return;
-                }
+    $.ajax({
+        url: tsvUrl,
+        type: 'GET',
+        dataType: 'text',
+        success: function(data) {
+            console.log(`[MIDB] Data received for ${tableId}`);
+            const lines = data.trim().split('\n');
+            if (lines.length < 2) {
+                console.error(`[MIDB] ${filename} is empty or invalid.`);
+                return;
+            }
 
-                const headers = lines[0].split('\t').map(h => ({ title: h.trim() }));
-                const rows = lines.slice(1).map(l => l.split('\t'));
+            const headers = lines[0].split('\t').map(h => ({ title: h.trim() }));
+            const rows = lines.slice(1).map(l => l.split('\t'));
 
+            if ($(tableId).length > 0) {
                 $(tableId).DataTable({
                     data: rows,
                     columns: headers,
                     pageLength: 10,
                     scrollX: true,
                     autoWidth: false,
-                    dom: 'frtip',
-                    language: {
-                        search: "Filter records:"
-                    }
+                    dom: 'frtip'
                 });
-                console.log("Successfully initialized " + tableId);
-            },
-            error: function(xhr, status, error) {
-                console.error("Failed to load " + finalUrl + ": " + status + " " + error);
-                $(tableId).after('<p style="color:red">Error: Could not find data at ' + finalUrl + '</p>');
+                console.log(`[MIDB] Table ${tableId} successfully rendered.`);
+            } else {
+                console.error(`[MIDB] Target element ${tableId} not found in DOM.`);
             }
-        });
-    }
+        },
+        error: function(xhr, status, error) {
+            console.error(`[MIDB] Failed to load TSV: ${tsvUrl}`, error);
+            $(tableId).after(`<p style="color:red">Data Load Error: ${status}</p>`);
+        }
+    });
+}
 
-    loadMIDBTable('#integron-table', 'integronfinder_results_integrons.tsv');
-    loadMIDBTable('#gene-table', 'bakta_annotations.tsv');
+$(document).ready(function() {
+    setTimeout(function() {
+        initMIDBTable('#integron-table', 'integronfinder_results_integrons.tsv');
+        initMIDBTable('#gene-table', 'bakta_annotations.tsv');
+    }, 100);
 });
