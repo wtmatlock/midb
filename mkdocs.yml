@@ -20,4 +20,5 @@ extra_javascript:
 
 extra:
   include_files:
-    - combined_integronfinder_results_integrons.tsv
+    - integronfinder_results_integrons.tsv
+    - bakta_annotations.tsv
