@@ -1,22 +1,46 @@
-function loadTSV(url, tableId) {
-    $.get(url, function(data) {
-        const lines = data.trim().split("\n");
-        const headers = lines[0].split("\t");
+$(document).ready(function () {
 
-        const rows = lines.slice(1).map(line => line.split("\t"));
+    function parseTSV(data) {
+        const lines = data.trim().split('\n');
+        const headers = lines[0].split('\t');
 
         const columns = headers.map(h => ({ title: h }));
+        const rows = lines.slice(1).map(l => l.split('\t'));
 
-        $(`#${tableId}`).DataTable({
-            data: rows,
-            columns: columns,
-            scrollX: true,
-            pageLength: 25
+        return { columns, rows };
+    }
+
+    function initTable($table) {
+        const tsvFile = $table.data('tsv');
+
+        if (!tsvFile) {
+            console.warn("No data-tsv attribute found for table:", $table);
+            return;
+        }
+
+        $.ajax({
+            url: tsvFile,
+            dataType: 'text',
+            success: function (data) {
+                const parsed = parseTSV(data);
+
+                $table.DataTable({
+                    data: parsed.rows,
+                    columns: parsed.columns,
+                    pageLength: 10,
+                    deferRender: true,
+                    scrollX: true,
+                    autoWidth: false
+                });
+            },
+            error: function (xhr, status, err) {
+                console.error("Failed to load TSV:", tsvFile, err);
+            }
         });
-    });
-}
+    }
 
-$(document).ready(function () {
-    loadTSV("integronfinder_results_integrons.tsv", "integron-table");
-    loadTSV("bakta_annotations.tsv", "gene-table");
+    $('.tsv-table').each(function () {
+        initTable($(this));
+    });
+
 });
