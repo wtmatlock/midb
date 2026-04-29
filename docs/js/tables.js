@@ -1,19 +1,16 @@
 $(document).ready(function() {
 
-    function loadTableData(tsvUrl, tableSelector) {
+    function loadSearchableTable(tableId, tsvUrl) {
         $.ajax({
             url: tsvUrl,
             dataType: 'text',
             success: function(data) {
                 const lines = data.trim().split('\n');
-                
-                if (lines.length === 0 || lines[0] === "") return; 
-
                 const headers = lines[0].split('\t');
-                const columns = headers.map(h => ({ title: h }));
+                const columns = headers.map(h => ({ title: h.trim() }));
                 const rows = lines.slice(1).map(l => l.split('\t'));
 
-                $(tableSelector).DataTable({
+                $(tableId).DataTable({
                     data: rows,
                     columns: columns,
                     pageLength: 10,
@@ -23,19 +20,12 @@ $(document).ready(function() {
                 });
             },
             error: function(xhr, status, error) {
-                console.error("Failed to load data for " + tableSelector + ":", error);
+                console.error("Error loading " + tsvUrl, error);
             }
         });
     }
 
-    loadTableData(
-        'integronfinder_results_integrons.tsv', 
-        '#integron-table'
-    );
+    loadSearchableTable('#integron-table', 'integronfinder_results_integrons.tsv');
 
-    loadTableData(
-        'bakta_annotations.tsv',
-        '#gene-table'
-    );
-
+    loadSearchableTable('#gene-table', 'bakta_annotations.tsv');
 });
