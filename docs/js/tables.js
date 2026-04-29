@@ -38,4 +38,6 @@ function initTables() {
     loadTable('#gene-table', 'bakta_annotations.tsv');
 }
 
-document.addEventListener('DOMContentLoaded', initTables);
+document$.subscribe(function () {
+    initTables();
+});
