@@ -1,12 +1,21 @@
-document$.subscribe(function () {
+function initTables() {
 
     function loadTable(tableId, tsvFile) {
+
         fetch(tsvFile)
-            .then(response => response.text())
-            .then(data => {
-                const lines = data.trim().split('\n');
+            .then(r => {
+                if (!r.ok) throw new Error(`Failed to load ${tsvFile}`);
+                return r.text();
+            })
+            .then(text => {
+                const lines = text.trim().split('\n');
                 const headers = lines[0].split('\t').map(h => ({ title: h }));
                 const rows = lines.slice(1).map(l => l.split('\t'));
+
+                if (!window.jQuery || !$.fn.DataTable) {
+                    console.error("DataTables not loaded yet");
+                    return;
+                }
 
                 $(tableId).DataTable({
                     data: rows,
@@ -16,9 +25,11 @@ document$.subscribe(function () {
                     destroy: true
                 });
             })
-            .catch(err => console.error("Failed to load:", tsvFile, err));
+            .catch(err => console.error(err));
     }
 
-    loadTable('#integron-table', '/integronfinder_results_integrons.tsv');
-    loadTable('#gene-table', '/bakta_annotations.tsv');
-});
+    loadTable('#integron-table', 'integronfinder_results_integrons.tsv');
+    loadTable('#gene-table', 'bakta_annotations.tsv');
+}
+
+document.addEventListener('DOMContentLoaded', initTables);
