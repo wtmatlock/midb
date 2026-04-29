@@ -27,28 +27,30 @@ Search by gene name, protein product, or Bakta annotation.
 [hidden](bakta_annotations.tsv){: style="display:none" }
 
 <style>
-/* Prevent layout overflow */
-.md-typeset .table-container,
-.md-typeset .dataTables_wrapper {
-    width: 100% !important;
-    max-width: 100% !important;
-    margin-bottom: 2em;
+.wy-nav-content {
+    max-width: none !important; 
 }
 
-/* Force DataTables to behave in Material Theme */
-.md-typeset table.dataTable {
-    display: table !important;
-    width: 100% !important;
-    table-layout: auto !important;
-    font-size: 0.85em;
+.table-container {
+    margin-bottom: 30px;
+    width: 100%;
 }
 
-/* Wrap long biological IDs */
-.md-typeset table.dataTable td, 
-.md-typeset table.dataTable th {
-    max-width: 300px;
-    white-space: normal !important;
+table.dataTable {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    font-size: 0.9em;
+}
+
+table.dataTable td, table.dataTable th {
     word-break: break-all !important;
+    white-space: normal !important;
+    padding: 8px 12px;
 }
-</style>
+
+.dataTables_wrapper .dataTables_filter input {
+    border: 1px solid #ccc;
+    padding: 5px;
+    border-radius: 4px;
+}
 </style>
