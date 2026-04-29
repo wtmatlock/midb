@@ -24,6 +24,10 @@ function initTables() {
                     columns: headers,
                     scrollX: true,
                     pageLength: 10,
+                    lengthChange: false,
+                    searching: true,
+                    paging: true,
+                    info: true,
                     destroy: true
                 });
             })
