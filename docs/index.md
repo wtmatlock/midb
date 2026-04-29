@@ -6,7 +6,7 @@ To quickly search for a plasmid accession or gene, [go here](quickstart.md), to 
 
 ## Version
 
-This is **v. 1.0.0**. I expect major updates to coincide with new relases of PLSDB (this version is built on v. 2024_05_31_v2). Minor additions might be made in the meantime.
+This is **v. 1.0.0**. I expect major updates to coincide with new releases of PLSDB (this version is built on v. 2024_05_31_v2). Minor additions might be made in the meantime.
 
 ## Citation
 
