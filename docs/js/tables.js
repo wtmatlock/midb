@@ -1,3 +1,5 @@
+console.log("tables.js loaded");
+
 function initTables() {
 
     function loadTable(tableId, tsvFile) {
