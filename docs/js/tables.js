@@ -1,52 +1,22 @@
-console.log("tables.js loaded");
+function loadTSV(url, tableId) {
+    $.get(url, function(data) {
+        const lines = data.trim().split("\n");
+        const headers = lines[0].split("\t");
 
-function initTables() {
+        const rows = lines.slice(1).map(line => line.split("\t"));
 
-    function loadTable(tableId, tsvFile) {
-        fetch(tsvFile)
-            .then(r => {
-                if (!r.ok) {
-                    throw new Error(`Failed to load ${tsvFile}: ${r.status}`);
-                }
-                return r.text();
-            })
-            .then(text => {
-                const lines = text.trim().split('\n');
-                const headers = lines[0].split('\t').map(h => ({ title: h }));
-                const rows = lines.slice(1).map(l => l.split('\t'));
+        const columns = headers.map(h => ({ title: h }));
 
-                if (!window.jQuery || !$.fn.DataTable) {
-                    console.error("DataTables not loaded");
-                    return;
-                }
-
-                if ($.fn.DataTable.isDataTable(tableId)) {
-                    $(tableId).DataTable().destroy();
-                    $(tableId).empty();
-                } else {
-                    $(tableId).empty();
-                }
-
-                $(tableId).DataTable({
-                    data: rows,
-                    columns: headers,
-                    pageLength: 10,
-                    lengthChange: false,
-                    searching: true,
-                    paging: true,
-                    info: true,
-                    scrollX: true,
-                    autoWidth: false,
-                    deferRender: true
-                });
-            })
-            .catch(err => console.error("TABLE LOAD ERROR:", err));
-    }
-
-    loadTable('#integron-table', 'integronfinder_results_integrons.tsv');
-    loadTable('#gene-table', 'bakta_annotations.tsv');
+        $(`#${tableId}`).DataTable({
+            data: rows,
+            columns: columns,
+            scrollX: true,
+            pageLength: 25
+        });
+    });
 }
 
-document$.subscribe(function () {
-    setTimeout(initTables, 50);
+$(document).ready(function () {
+    loadTSV("integronfinder_results_integrons.tsv", "integron-table");
+    loadTSV("bakta_annotations.tsv", "gene-table");
 });
