@@ -1,5 +1,8 @@
 site_name: Mobile integron database
-theme: readthedocs
+theme:
+  name: material
+  features:
+    - content.code.copy
 
 nav:
   - Welcome: index.md
@@ -9,6 +12,7 @@ nav:
 
 markdown_extensions:
   - attr_list
+  - pymdownx.superfences
 
 plugins:
   - search
