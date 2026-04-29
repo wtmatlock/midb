@@ -1,10 +1,7 @@
-site_name: Mobile integron database
+site_name: Mobile integron database v. 1.0.0
 
 theme:
   name: material
-  features:
-    - content.code.copy
-    - navigation.sections
 
 nav:
   - Home: index.md
@@ -14,7 +11,6 @@ nav:
 
 plugins:
   - search
-  - table-reader 
 
 extra_css:
   - https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css
@@ -23,7 +19,3 @@ extra_javascript:
   - https://code.jquery.com/jquery-3.7.1.min.js
   - https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js
   - js/tables.js
-
-extra:
-  assets:
-    - docs/*.tsv
