@@ -2,8 +2,6 @@ site_name: Mobile Integron Database
 
 theme:
   name: material
-  features:
-    - content.code.copy
 
 nav:
   - Home: index.md
