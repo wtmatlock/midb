@@ -6,9 +6,7 @@ function initTables() {
 
         fetch(tsvFile)
             .then(r => {
-                if (!r.ok) {
-                    throw new Error(`Failed to load ${tsvFile}: ${r.status}`);
-                }
+                if (!r.ok) throw new Error(`Failed to load ${tsvFile}`);
                 return r.text();
             })
             .then(text => {
@@ -22,12 +20,18 @@ function initTables() {
                 const rows = lines.slice(1)
                     .map(l => l.split('\t'));
 
-                if ($.fn.DataTable.isDataTable(tableId)) {
-                    $(tableId).DataTable().destroy();
-                    $(tableId).empty();
+                if (!window.jQuery || !$.fn.DataTable) {
+                    console.error("DataTables not loaded");
+                    return;
                 }
 
-                console.log("Initialising DataTable:", tableId, rows.length, "rows");
+                if ($.fn.DataTable.isDataTable(tableId)) {
+                    $(tableId).DataTable().destroy();
+                }
+
+                $(tableId).empty();
+
+                console.log("Rendering DataTable:", tableId, rows.length);
 
                 $(tableId).DataTable({
                     data: rows,
@@ -41,13 +45,11 @@ function initTables() {
 
                     scrollX: true,
                     autoWidth: false,
-                    deferRender: true,
-
-                    destroy: true
+                    deferRender: true
                 });
 
             })
-            .catch(err => console.error("TABLE LOAD ERROR:", err));
+            .catch(err => console.error(err));
     }
 
     loadTable('#integron-table', 'integronfinder_results_integrons.tsv');
@@ -55,5 +57,5 @@ function initTables() {
 }
 
 document$.subscribe(function () {
-    initTables();
+    setTimeout(initTables, 50);
 });
