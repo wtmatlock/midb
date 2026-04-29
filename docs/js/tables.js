@@ -1,6 +1,6 @@
-$(document).ready(function() {
+function loadTable(file, tableId) {
     $.ajax({
-        url: 'combined_integronfinder_results_integrons.tsv',
+        url: file,
         dataType: 'text',
         success: function(data) {
             const lines = data.trim().split('\n');
@@ -9,7 +9,7 @@ $(document).ready(function() {
             const columns = headers.map(h => ({ title: h }));
             const rows = lines.slice(1).map(l => l.split('\t'));
 
-            $('#integron-table').DataTable({
+            $(tableId).DataTable({
                 data: rows,
                 columns: columns,
                 pageLength: 10,
@@ -19,4 +19,8 @@ $(document).ready(function() {
             });
         }
     });
-});
+}
+
+// Load both tables
+loadTable('integronfinder_results_integrons.tsv', '#integron-table');
+loadTable('bakta_annotations.tsv', '#gene-table');
